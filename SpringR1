@@ -79,6 +79,7 @@ interface GigabitEthernet0/0
  ipv6 address FE80::1 link-local
  ipv6 address 2001:BBFC:88EF:FFFD::1/64
  ipv6 ospf 15 area 0
+no shut
 !
 interface GigabitEthernet0/1
  ip address 10.150.127.9 255.255.255.252
@@ -92,6 +93,7 @@ interface GigabitEthernet0/1
  ipv6 address FE80::1 link-local
  ipv6 address 2001:BBFC:88EF:FFFE::1/64
  ipv6 ospf 15 area 0
+no shut
 !
 interface GigabitEthernet0/2
  description Line to SpringR2
@@ -107,6 +109,7 @@ interface GigabitEthernet0/2
  ipv6 address 2001:BBFC:88EF:FFFF::1/64
  ipv6 ospf 15 area 0
  ospfv3 priority 175
+no shut
 !
 interface GigabitEthernet0/3
  ip address dhcp
@@ -116,6 +119,7 @@ interface GigabitEthernet0/3
  duplex auto
  speed auto
  media-type rj45
+no shut
 !
 router ospfv3 15
  router-id 1.1.1.1
@@ -140,9 +144,9 @@ ip nat inside source list 1 interface GigabitEthernet0/3 overload
 ip route 0.0.0.0 0.0.0.0 192.168.255.1
 ip ssh version 2
 !
-ip access-list standard ALLOW_IT_VLAN_VTY
- permit ip 10.150.120.0 0.0.0.255
- deny any
+!ip access-list standard ALLOW_IT_VLAN_VTY
+! permit ip 10.150.120.0 0.0.0.255
+! deny any
 !
 logging host 10.150.0.16
 ipv6 ioam timestamp
@@ -188,12 +192,12 @@ line con 0
  login
 line aux 0
 line vty 0 4
- access-class ALLOW_IT_VLAN_VTY in
+ !access-class ALLOW_IT_VLAN_VTY in
  password cisco
  login
  transport input ssh
 line vty 5 15
- access-class ALLOW_IT_VLAN_VTY in
+ !access-class ALLOW_IT_VLAN_VTY in
  password cisco
  login
  transport input ssh
