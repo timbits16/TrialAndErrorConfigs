@@ -134,9 +134,6 @@ ip nat inside source list 1 interface GigabitEthernet0/3 overload
 ip route 0.0.0.0 0.0.0.0 192.168.255.1
 ip ssh version 2
 !
-ip access-list standard ALLOW_IT_VLAN_VTY
- permit 10.150.120.0 0.0.0.255
-deny any
 !
 logging host 10.150.0.16
 ipv6 ioam timestamp
@@ -182,12 +179,10 @@ line con 0
  login
 line aux 0
 line vty 0 4
- access-class ALLOW_IT_VLAN_VTY in
  password cisco
  login
  transport input ssh
 line vty 5 15
- access-class ALLOW_IT_VLAN_VTY in
  password cisco
  login
  transport input ssh
