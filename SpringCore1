@@ -46,63 +46,83 @@ spanning-tree vlan 305,310,315,320,325,720,990 priority 28672
 !
 vlan 105
  name PharmaPlus
+no shutdown
 !
 vlan 115  
  name DynaLabs
+no shutdown
 !
 vlan 125
  name Reception
+no shutdown
 !
 vlan 135
  name Security
+no shutdown
 !
 vlan 145
  name Facilities
+no shutdown
 !
 vlan 155
  name Visitor1
+no shutdown
 !
 vlan 200
  name Physicians
+no shutdown
 !
 vlan 205
  name ChildrensHealth
+no shutdown
 !
 vlan 210
  name CoolidgeLab
+no shutdown
 !         
 vlan 215
  name MassageSpa
+no shutdown
 !
 vlan 220
  name Visitor2
+no shutdown
 !
 vlan 305
  name Allergist
+no shutdown
 !
 vlan 310
  name Physiotherapy
+no shutdown
 !
 vlan 315
  name DentalOffice
+no shutdown
 !
 vlan 320
  name ENT
+no shutdown
 !
 vlan 325
  name Visitor3
+no shutdown
 !
 vlan 720
  name IT  
+no shutdown
 !
 vlan 888
  name Closed
+no shutdown
 !
 vlan 990
  name DataCenter
+no shutdown
 !
 vlan 999
  name Native
+no shutdown
 !
 ! 
 !
@@ -123,6 +143,7 @@ interface Port-channel1
  switchport trunk native vlan 999
  switchport mode trunk
  switchport nonegotiate
+no shutdown
 !
 interface GigabitEthernet0/0
  switchport trunk allowed vlan 105,115,125,135,145,155,720,999
@@ -130,6 +151,7 @@ interface GigabitEthernet0/0
  switchport trunk native vlan 999
  switchport mode trunk
  negotiation auto
+no shutdown
 !
 interface GigabitEthernet0/1
  switchport trunk allowed vlan 200,205,210,215,220,720,999
@@ -138,6 +160,7 @@ interface GigabitEthernet0/1
  switchport mode trunk
  switchport nonegotiate
  negotiation auto
+no shutdown
 !
 interface GigabitEthernet0/2
  switchport trunk allowed vlan 305,310,315,320,325,720,999
@@ -146,6 +169,7 @@ interface GigabitEthernet0/2
  switchport mode trunk
  switchport nonegotiate
  negotiation auto
+no shutdown
 !
 interface GigabitEthernet0/3
  switchport trunk allowed vlan 720,990,999
@@ -154,6 +178,7 @@ interface GigabitEthernet0/3
  switchport mode trunk
  switchport nonegotiate
  negotiation auto
+no shutdown
 !
 interface GigabitEthernet1/0
  switchport trunk allowed vlan 720,990,999
@@ -163,6 +188,7 @@ interface GigabitEthernet1/0
  switchport nonegotiate
  negotiation auto
  channel-group 1 mode desirable
+no shutdown
 !
 interface GigabitEthernet1/1
  no switchport
@@ -173,6 +199,7 @@ interface GigabitEthernet1/1
  ipv6 address FE80::3 link-local
  ipv6 address 2001:BBFC:88EF:FFFC::1/64
  ipv6 ospf 15 area 0
+no shutdown
 !
 interface GigabitEthernet1/2
  no switchport
@@ -183,6 +210,7 @@ interface GigabitEthernet1/2
  ipv6 address FE80::3 link-local
  ipv6 address 2001:BBFC:88EF:FFFB::1/64
  ipv6 ospf 15 area 0
+no shutdown
 !
 interface GigabitEthernet1/3
  no switchport
@@ -193,6 +221,7 @@ interface GigabitEthernet1/3
  ipv6 address FE80::3 link-local
  ipv6 address 2001:BBFC:88EF:FFFD::2/64
  ipv6 ospf 15 area 0
+no shutdown
 !
 interface Vlan105
  ip address 10.150.8.2 255.255.255.0
