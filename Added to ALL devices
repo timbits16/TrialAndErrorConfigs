@@ -6,3 +6,14 @@ line vty 0 4
  access-class ALLOW_IT_VLAN_VTY in
 line vty 5 15
  access-class ALLOW_IT_VLAN_VTY in
+
+
+
+
+crypto key generate rsa
+2048
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+username MNUser4 password Windows1
