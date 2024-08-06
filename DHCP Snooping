@@ -1,0 +1,32 @@
+SpringCores
+
+ip dhcp snooping
+
+
+F1
+ip dhcp snooping
+ip dhcp snooping vlan 105,115,125,135,145,155,720,888,990,999
+
+interface range GigabitEthernet0/0 - 1
+ip dhcp snooping trust
+interface range GigabitEthernet0/3
+ip dhcp snooping trust
+
+F2
+ip dhcp snooping
+ip dhcp snooping vlan 200,205,210,215,220,720,888,999
+
+interface range GigabitEthernet0/0 - 1
+ip dhcp snooping trust
+interface range GigabitEthernet2/0
+ip dhcp snooping trust
+
+F3
+ip dhcp snooping
+ip dhcp snooping vlan 305,310,315,320,325,720,888,999
+
+interface range GigabitEthernet0/0 - 1
+ip dhcp snooping trust
+interface range GigabitEthernet2/0
+ip dhcp snooping trust
+
