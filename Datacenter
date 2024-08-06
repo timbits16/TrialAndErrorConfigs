@@ -197,9 +197,6 @@ ip http secure-server
 ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 !
-ip access-list standard ALLOW_IT_VLAN_VTY
- permit 10.150.120.0 0.0.0.255
-deny any
 !
 logging host 10.150.0.16
 !
@@ -244,12 +241,10 @@ line con 0
  login
 line aux 0
 line vty 0 4
- access-class ALLOW_IT_VLAN_VTY in
  password cisco
  login
  transport input ssh
 line vty 5 15
- access-class ALLOW_IT_VLAN_VTY in
  password cisco
  login
  transport input ssh
