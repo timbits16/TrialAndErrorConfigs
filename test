@@ -1,2 +1,5 @@
-ip nat pool ACCESS 192.168.255.63 192.168.255.63 netmask 255.255.255.252
-https://cafepiccolo.com/pagespeed/wicked-fast.html
+interface gi2/3
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation
+switchport port-security violation shutdown
