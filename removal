@@ -1,0 +1,6 @@
+configure terminal
+interface GigabitEthernet0/3
+no ip access-group ALLOW_DNS_HTTP_HTTPS out
+exit
+no ip access-list extended ALLOW_DNS_HTTP_HTTPS
+exit
