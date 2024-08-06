@@ -1,9 +1,9 @@
 SpringCore1#show run
 Building configuration...
 
-Current configuration : 13169 bytes
+Current configuration : 13130 bytes
 !
-! Last configuration change at 03:47:17 UTC Mon Aug 5 2024
+! Last configuration change at 07:52:51 UTC Mon Aug 5 2024
 !
 version 15.2
 service timestamps debug datetime msec
@@ -46,83 +46,63 @@ spanning-tree vlan 305,310,315,320,325,720,990 priority 28672
 !
 vlan 105
  name PharmaPlus
-no shutdown
-!
-vlan 115  
+!         
+vlan 115
  name DynaLabs
-no shutdown
 !
 vlan 125
  name Reception
-no shutdown
 !
 vlan 135
  name Security
-no shutdown
 !
 vlan 145
  name Facilities
-no shutdown
 !
 vlan 155
  name Visitor1
-no shutdown
 !
 vlan 200
  name Physicians
-no shutdown
 !
 vlan 205
  name ChildrensHealth
-no shutdown
 !
 vlan 210
  name CoolidgeLab
-no shutdown
-!         
+!
 vlan 215
  name MassageSpa
-no shutdown
 !
 vlan 220
  name Visitor2
-no shutdown
 !
 vlan 305
  name Allergist
-no shutdown
 !
 vlan 310
  name Physiotherapy
-no shutdown
 !
 vlan 315
  name DentalOffice
-no shutdown
 !
 vlan 320
  name ENT
-no shutdown
 !
 vlan 325
  name Visitor3
-no shutdown
 !
-vlan 720
+vlan 720  
  name IT  
-no shutdown
 !
 vlan 888
  name Closed
-no shutdown
 !
 vlan 990
  name DataCenter
-no shutdown
 !
 vlan 999
  name Native
-no shutdown
 !
 ! 
 !
@@ -135,15 +115,14 @@ no shutdown
 !
 !
 !
-!
 !         
+!
 interface Port-channel1
  switchport trunk allowed vlan 720,990,999
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 999
  switchport mode trunk
  switchport nonegotiate
-no shutdown
 !
 interface GigabitEthernet0/0
  switchport trunk allowed vlan 105,115,125,135,145,155,720,999
@@ -151,7 +130,6 @@ interface GigabitEthernet0/0
  switchport trunk native vlan 999
  switchport mode trunk
  negotiation auto
-no shutdown
 !
 interface GigabitEthernet0/1
  switchport trunk allowed vlan 200,205,210,215,220,720,999
@@ -160,8 +138,7 @@ interface GigabitEthernet0/1
  switchport mode trunk
  switchport nonegotiate
  negotiation auto
-no shutdown
-!
+!         
 interface GigabitEthernet0/2
  switchport trunk allowed vlan 305,310,315,320,325,720,999
  switchport trunk encapsulation dot1q
@@ -169,7 +146,6 @@ interface GigabitEthernet0/2
  switchport mode trunk
  switchport nonegotiate
  negotiation auto
-no shutdown
 !
 interface GigabitEthernet0/3
  switchport trunk allowed vlan 720,990,999
@@ -178,7 +154,6 @@ interface GigabitEthernet0/3
  switchport mode trunk
  switchport nonegotiate
  negotiation auto
-no shutdown
 !
 interface GigabitEthernet1/0
  switchport trunk allowed vlan 720,990,999
@@ -188,7 +163,6 @@ interface GigabitEthernet1/0
  switchport nonegotiate
  negotiation auto
  channel-group 1 mode desirable
-no shutdown
 !
 interface GigabitEthernet1/1
  no switchport
@@ -199,7 +173,6 @@ interface GigabitEthernet1/1
  ipv6 address FE80::3 link-local
  ipv6 address 2001:BBFC:88EF:FFFC::1/64
  ipv6 ospf 15 area 0
-no shutdown
 !
 interface GigabitEthernet1/2
  no switchport
@@ -210,7 +183,6 @@ interface GigabitEthernet1/2
  ipv6 address FE80::3 link-local
  ipv6 address 2001:BBFC:88EF:FFFB::1/64
  ipv6 ospf 15 area 0
-no shutdown
 !
 interface GigabitEthernet1/3
  no switchport
@@ -221,7 +193,6 @@ interface GigabitEthernet1/3
  ipv6 address FE80::3 link-local
  ipv6 address 2001:BBFC:88EF:FFFD::2/64
  ipv6 ospf 15 area 0
-no shutdown
 !
 interface Vlan105
  ip address 10.150.8.2 255.255.255.0
@@ -291,7 +262,7 @@ interface Vlan145
 interface Vlan155
  ip address 10.150.28.2 255.255.255.0
  ip helper-address 10.150.0.12 
- ip helper-address 10.150.0.13  
+ ip helper-address 10.150.0.13 
  standby version 2
  standby 155 ip 10.150.28.1
  standby 155 priority 150
@@ -304,7 +275,7 @@ interface Vlan155
 interface Vlan200
  ip address 10.150.44.2 255.255.255.0
  ip helper-address 10.150.0.12 
- ip helper-address 10.150.0.13  
+ ip helper-address 10.150.0.13 
  standby version 2
  standby 200 ip 10.150.44.1
  standby 200 priority 150
@@ -355,7 +326,7 @@ interface Vlan215
 !
 interface Vlan220
  ip address 10.150.60.2 255.255.255.0
-! ip access-group DENY_VISITORS_TO_DC in
+ ip access-group DENY_VISITORS_TO_DC in
  ip helper-address 10.150.0.12 
  ip helper-address 10.150.0.13 
  standby version 2
@@ -413,7 +384,7 @@ interface Vlan320
 !
 interface Vlan325
  ip address 10.150.96.2 255.255.255.0
-! ip access-group DENY_VISITORS_TO_DC in
+ ip access-group DENY_VISITORS_TO_DC in
  ip helper-address 10.150.0.12 
  ip helper-address 10.150.0.13 
  standby version 2
@@ -434,9 +405,12 @@ interface Vlan720
  ipv6 address 2001:BBFC:88EF:720::1/64
  ipv6 ospf 15 area 0
 !
+interface Vlan888
+ no ip address
+!
 interface Vlan990
  ip address 10.150.0.42 255.255.255.0
-  !ip access-group DENY_VISITORS_TO_DC out
+ ip access-group DENY_VISITORS_TO_DC out
  ip helper-address 10.150.0.12 
  ip helper-address 10.150.0.13 
  standby version 2
@@ -486,11 +460,10 @@ router ospf 15
  passive-interface Vlan990
  passive-interface Vlan999
  network 10.150.0.0 0.0.127.255 area 0
-!
-ip default-gateway 192.168.255.1
-!
-ip forward-protocol nd
 !         
+ip default-gateway 192.168.255.1
+ip forward-protocol nd
+!
 ip http server
 ip http secure-server
 !
@@ -499,52 +472,53 @@ ip route 0.0.0.0 0.0.0.0 10.150.127.2 10
 ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 !
-!ip access-list extended ALLOW_IT_VLAN_VTY
-!permit ip 10.150.120.0 0.0.0.255
-!deny any
-!ip access-list extended DENY_VISITORS_TO_DC
-! deny   ip 10.150.60.0 0.0.0.255 10.150.0.0 0.0.0.255
-! deny   ip 10.150.96.0 0.0.0.255 10.150.0.0 0.0.0.255
- !permit ip any any
+ip access-list standard ALLOW_IT_VLAN_VTY
+ permit ip 10.150.120.0 0.0.0.255
+ dent any
+ip access-list extended DENY_VISITORS_TO_DC
+ deny   ip 10.150.28.0 0.0.0.255 10.150.0.0 0.0.0.255
+ deny   ip 10.150.60.0 0.0.0.255 10.150.0.0 0.0.0.255
+ deny   ip 10.150.96.0 0.0.0.255 10.150.0.0 0.0.0.255
+ permit ip any
 !
 logging host 10.150.0.16
-logging trap informational
 ipv6 router ospf 15
-!
-!
-!
 !         
+!
+!
+!
 !
 control-plane
 !
-banner exec ^C
+banner exec ^CC
 IOSv - Cisco Systems Confidential -
 
 Supplemental End User License Restrictions
 
-This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environme
 
 By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
 ^C
-banner incoming ^C
+banner incoming ^CC
 IOSv - Cisco Systems Confidential -
-
+          
 Supplemental End User License Restrictions
 
           
-This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environme
 
 By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
 ^C
-banner login ^C
+banner login ^CC
 IOSv - Cisco Systems Confidential -
 
 Supplemental End User License Restrictions
 
-This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environme
 
+          
 By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
-^C        
+^C
 !
 line con 0
  exec-timeout 0 0
@@ -553,17 +527,17 @@ line con 0
  login
 line aux 0
 line vty 0 4
- !access-class ALLOW_IT_VLAN_VTY in
+ access-class ALLOW_IT_VLAN_VTY in
  password cisco
  login
  transport input ssh
 line vty 5 15
- !access-class ALLOW_IT_VLAN_VTY in
+ access-class ALLOW_IT_VLAN_VTY in
  password cisco
  login
  transport input ssh
 !
-!
+!         
 end
 
-SpringCore1#               
+SpringCore1#
