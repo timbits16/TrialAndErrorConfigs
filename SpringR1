@@ -1,10 +1,9 @@
-SpringR1#sho run
+SpringR1#show run
 Building configuration...
 
-  
-Current configuration : 4568 bytes
+Current configuration : 4585 bytes
 !
-! Last configuration change at 01:33:49 UTC Mon Aug 5 2024
+! Last configuration change at 05:54:45 UTC Mon Aug 5 2024
 !
 version 15.9
 service timestamps debug datetime msec
@@ -47,8 +46,8 @@ ipv6 cef
 !
 multilink bundle-name authenticated
 !
-!
 !         
+!
 !
 !
 redundancy
@@ -69,6 +68,7 @@ redundancy
 !
 interface GigabitEthernet0/0
  ip address 10.150.127.5 255.255.255.252
+ ip helper-address 10.150.0.21
  ip nat inside
  ip virtual-reassembly in
  ip ospf network point-to-point
@@ -79,7 +79,6 @@ interface GigabitEthernet0/0
  ipv6 address FE80::1 link-local
  ipv6 address 2001:BBFC:88EF:FFFD::1/64
  ipv6 ospf 15 area 0
-no shut
 !
 interface GigabitEthernet0/1
  ip address 10.150.127.9 255.255.255.252
@@ -93,8 +92,8 @@ interface GigabitEthernet0/1
  ipv6 address FE80::1 link-local
  ipv6 address 2001:BBFC:88EF:FFFE::1/64
  ipv6 ospf 15 area 0
-no shut
-!
+
+!         
 interface GigabitEthernet0/2
  description Line to SpringR2
  ip address 10.150.127.1 255.255.255.252
@@ -109,7 +108,6 @@ interface GigabitEthernet0/2
  ipv6 address 2001:BBFC:88EF:FFFF::1/64
  ipv6 ospf 15 area 0
  ospfv3 priority 175
-no shut
 !
 interface GigabitEthernet0/3
  ip address dhcp
@@ -119,7 +117,6 @@ interface GigabitEthernet0/3
  duplex auto
  speed auto
  media-type rj45
-no shut
 !
 router ospfv3 15
  router-id 1.1.1.1
@@ -144,9 +141,9 @@ ip nat inside source list 1 interface GigabitEthernet0/3 overload
 ip route 0.0.0.0 0.0.0.0 192.168.255.1
 ip ssh version 2
 !
-!ip access-list standard ALLOW_IT_VLAN_VTY
-! permit ip 10.150.120.0 0.0.0.255
-! deny any
+ip access-list extended ALLOW_IT_VLAN_VTY
+permit ip 10.150.120.0 0.0.0.255
+deny any
 !
 logging host 10.150.0.16
 ipv6 ioam timestamp
@@ -157,7 +154,7 @@ access-list 1 deny   any
 !
 control-plane
 !
-banner exec ^C
+banner exec ^CC
 **************************************************************************
 * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
 * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -166,7 +163,7 @@ banner exec ^C
 * purposes is expressly prohibited except as otherwise authorized by     *
 * Cisco in writing.                                                      *
 **************************************************************************^C
-banner incoming ^C
+banner incoming ^CC
 **************************************************************************
 * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
 * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -175,7 +172,7 @@ banner incoming ^C
 * purposes is expressly prohibited except as otherwise authorized by     *
 * Cisco in writing.                                                      *
 **************************************************************************^C
-banner login ^C
+banner login ^CC
 **************************************************************************
 * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
 * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -192,12 +189,12 @@ line con 0
  login
 line aux 0
 line vty 0 4
- !access-class ALLOW_IT_VLAN_VTY in
+ access-class ALLOW_IT_VLAN_VTY in
  password cisco
  login
  transport input ssh
 line vty 5 15
- !access-class ALLOW_IT_VLAN_VTY in
+ access-class ALLOW_IT_VLAN_VTY in
  password cisco
  login
  transport input ssh
@@ -206,4 +203,4 @@ no scheduler allocate
 !
 end
 
-SpringR1# 
+SpringR1#
