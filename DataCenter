@@ -72,12 +72,14 @@ interface Port-channel1
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 999
  switchport mode trunk
+no shutdown
 !
 interface Port-channel2
  switchport trunk allowed vlan 720,990,999
  switchport trunk encapsulation dot1q
  switchport trunk native vlan 999
  switchport mode trunk
+no shutdown
 !
 interface GigabitEthernet0/0
  switchport trunk allowed vlan 720,990,999
@@ -86,6 +88,7 @@ interface GigabitEthernet0/0
  switchport mode trunk
  negotiation auto
  channel-group 1 mode desirable
+no shutdown
 !
 interface GigabitEthernet0/1
  switchport trunk allowed vlan 720,990,999
@@ -94,6 +97,7 @@ interface GigabitEthernet0/1
  switchport mode trunk
  negotiation auto
  channel-group 1 mode desirable
+no shutdown
 !
 interface GigabitEthernet0/2
  switchport trunk allowed vlan 720,990,999
@@ -102,6 +106,7 @@ interface GigabitEthernet0/2
  switchport mode trunk
  negotiation auto
  channel-group 2 mode desirable
+no shutdown
 !
 interface GigabitEthernet0/3
  switchport trunk allowed vlan 720,990,999
@@ -110,24 +115,28 @@ interface GigabitEthernet0/3
  switchport mode trunk
  negotiation auto
  channel-group 2 mode desirable
+no shutdown
 !
 interface GigabitEthernet1/0
  switchport access vlan 990
  switchport mode access
  switchport nonegotiate
  negotiation auto
+no shutdown
 !
 interface GigabitEthernet1/1
  switchport access vlan 990
  switchport mode access
  switchport nonegotiate
  negotiation auto
+no shutdown
 !
 interface GigabitEthernet1/2
  switchport access vlan 990
  switchport mode access
  switchport nonegotiate
  negotiation auto
+no shutdown
 !
 interface GigabitEthernet1/3
  switchport access vlan 720
@@ -137,6 +146,7 @@ interface GigabitEthernet1/3
  switchport port-security mac-address sticky
  switchport port-security
  negotiation auto
+no shutdown
 !
 interface GigabitEthernet2/0
  switchport access vlan 888
@@ -144,6 +154,7 @@ interface GigabitEthernet2/0
  switchport nonegotiate
  shutdown
  negotiation auto
+no shutdown
 !
 interface GigabitEthernet2/1
  switchport access vlan 888
@@ -167,11 +178,7 @@ interface GigabitEthernet2/3
  negotiation auto
 !
 interface GigabitEthernet3/0
- switchport access vlan 888
- switchport mode access
- switchport nonegotiate
- shutdown
- negotiation auto
+no shutdown
 !
 interface GigabitEthernet3/1
  switchport access vlan 888
